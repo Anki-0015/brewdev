@@ -1,4 +1,28 @@
 #!/bin/bash
+#!/bin/bash
+
+echo "Welcome to BrewDev!"
+echo "Choose an option:"
+echo "1) Install software"
+echo "2) Uninstall software"
+echo "3) Exit"
+read -rp "Enter choice: " choice
+
+case "$choice" in
+  1)
+    ./install.sh
+    ;;
+  2)
+    ./uninstall.sh
+    ;;
+  3)
+    echo "Goodbye!"
+    exit 0
+    ;;
+  *)
+    echo "Invalid choice."
+    ;;
+esac
 
 COMMAND=$1
 SUBCOMMAND=$2
