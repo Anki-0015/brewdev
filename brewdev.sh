@@ -1,28 +1,4 @@
 #!/bin/bash
-
-echo "Welcome to BrewDev!"
-echo "Choose an option:"
-echo "1) Install software"
-echo "2) Uninstall software"
-echo "3) Exit"
-read -rp "Enter choice: " choice
-
-case "$choice" in
-  1)
-    ./install.sh
-    ;;
-  2)
-    ./uninstall.sh
-    ;;
-  3)
-    echo "Goodbye!"
-    exit 0
-    ;;
-  *)
-    echo "Invalid choice."
-    ;;
-esac
-
 COMMAND=$1
 SUBCOMMAND=$2
 VERSION="0.0.1"
@@ -52,7 +28,7 @@ RESET="\033[0m"
 
 if [[ "$COMMAND" == "setup" ]]; then
   if [[ "$SUBCOMMAND" == "fullstack" ]]; then
-    bash scripts/setup_fullstack.sh
+    bash scripts/gui.sh
   else
     echo -e "${RED}Unknown setup type: $SUBCOMMAND${RESET}"
   fi
