@@ -1,114 +1,164 @@
+# 🍺 BrewDev
 
-# BrewDev
+BrewDev is a powerful development environment setup tool that helps you quickly set up and manage your development environment on Linux systems.
 
-**BrewDev** is a lightweight CLI tool to set up fullstack development environments easily. It features a **menu-driven GUI installer** using `dialog` for a smoother and interactive experience.
+## Features
 
----
+- 🚀 Quick setup of development environments
+- 🛠️ Multiple environment types:
+  - FullStack
+  - Backend
+  - AI & ML
+  - Custom installations
+- 🔄 Easy uninstallation of tools
+- 🖥️ Both CLI and GUI interfaces
+- 🎨 Color-coded output for better visibility
+- 🔒 Safe installation and uninstallation processes
 
-## 🛠 Installation (GUI Menu)
+## Prerequisites
 
-To begin the setup, run:
+- Linux operating system
+- Git
+- Sudo privileges
+
+## Installation
+
+1. Download the installation script:
+```bash
+wget https://raw.githubusercontent.com/ManikLakhanpal/brewdev/main/install.sh
+```
+
+2. Make the installation script executable:
+```bash
+chmod +x install.sh
+```
+
+3. Run the installation script with sudo:
+```bash
+sudo ./install.sh
+```
+
+The script will:
+- Create the installation directory at `/usr/local/brewdev`
+- Clone the repository
+- Set up proper permissions
+- Create system-wide symlinks
+- Add brewdev to the system PATH
+- Create a desktop entry (if using GUI)
+
+## Usage
+
+### CLI Mode
+
+BrewDev can be used in two ways:
+
+1. **Command Line Interface (CLI)**:
+```bash
+# Install fullstack environment with Python
+brewdev setup fullstack python
+
+# Install backend environment with Node.js
+brewdev setup backend node
+
+# Install AI & ML environment
+brewdev setup ai-ml
+
+# Custom installation
+brewdev setup custom
+```
+
+2. **Graphical User Interface (GUI)**:
+```bash
+brewdev gui
+```
+
+### Available Commands
 
 ```bash
----
-curl -s https://raw.githubusercontent.com/ManikLakhanpal/brewdev/main/install.sh | bash
-
+brewdev setup [type] [language]    # Install development environment
+brewdev uninstall [type] [lang]   # Uninstall development environment
+brewdev gui                       # Run the GUI menu
+brewdev --help                    # Show help message
+brewdev --version                 # Show version information
 ```
-✅ This will launch a dialog-based GUI main menu with the following options:
 
-* **Install Fullstack**: Installs and sets up the fullstack development environment.
-* **Uninstall Fullstack**: Removes everything set up by BrewDev.
-* **Exit**: Closes the installer.
+### Setup Types
 
+- `fullstack`: Install fullstack environment
+- `backend`: Install backend environment
+- `ai-ml`: Install AI & ML environment
+- `custom`: Custom installation
 
+### Languages (for fullstack/backend)
 
-## ⚠️ Prerequisite: `dialog`
+- `python`: Python
+- `node`: Node.js
+- `java`: Java
+- `go`: Go
 
-The GUI requires the `dialog` package.
+## Post-Installation
 
-If not already installed, install it manually:
+After installation, you might need to:
 
+1. Log out and log back in for PATH changes to take effect, or
+2. Run the following command:
 ```bash
-# Debian/Ubuntu
-sudo apt-get update && sudo apt-get install -y dialog
-
-# Red Hat/Fedora
-sudo dnf install -y dialog
-
-# macOS (via Homebrew)
-brew install dialog
+source /etc/profile
 ```
 
-📦 On Debian-based systems, the installer will attempt to auto-install `dialog`.
+## Verification
 
----
-
-## ⚙️ Manual Fullstack Setup
-
-You can manually run the setup after installation with:
-
+To verify the installation:
 ```bash
-./brewdev.sh setup fullstack
+brewdev --version
 ```
 
-This initializes both frontend and backend project structure.
+## Uninstallation
 
----
+To uninstall tools, you can use either:
 
-## 📁 Project Structure
-
-```
-brewdev/
-├── brewdev.sh                 # Main CLI tool
-├── install.sh                 # GUI installer entry point
-├── uninstall.sh               # (Optional) direct uninstall
-├── scripts/
-│   ├── gui.sh                 # GUI logic using dialog
-│   ├── install_fullstack.sh   # Fullstack installation script
-│   └── uninstall_fullstack.sh # Fullstack uninstallation script
-```
-
----
-
-## 🧰 Requirements
-
-* Bash
-* Git
-* `dialog` (required for GUI)
-
----
-
-## 🔄 Uninstallation
-
-To uninstall via GUI:
-
+1. **CLI Mode**:
 ```bash
-curl -s https://raw.githubusercontent.com/ManikLakhanpal/brewdev/main/install.sh | bash
+brewdev uninstall fullstack python
+brewdev uninstall backend node
+brewdev uninstall ai-ml
 ```
 
-Then choose **"Uninstall Fullstack"** from the menu.
-
-Or run directly:
-
+2. **GUI Mode**:
 ```bash
-./scripts/uninstall_fullstack.sh
+brewdev gui
+```
+Then select "Uninstall Tools" from the main menu.
+
+## Troubleshooting
+
+1. If you get a "command not found" error after installation:
+   - Log out and log back in
+   - Or run `source /etc/profile`
+
+2. If you need to install Git first:
+```bash
+sudo apt-get update
+sudo apt-get install git
 ```
 
----
+3. For different Linux distributions:
+   - Modify the installation commands to use your package manager
+   - For RHEL/CentOS: use `yum`
+   - For Fedora: use `dnf`
 
-## 🤝 Contributing
+## Contributing
 
-Pull requests are welcome! Please submit any ideas, improvements, or bug fixes.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
----
+## License
 
-## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-MIT License
-© Ansh Kaushal
-© Manik Lakhanpal
-© Ankit
-© Ketan Sharma
+## Author
 
-```
-```
+Manik Lakhanpal
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on GitHub.
