@@ -3,6 +3,9 @@ COMMAND=$1
 SUBCOMMAND=$2
 VERSION="0.0.1"
 
+# Define the absolute path to the install scripts
+tool_dir="/usr/local/brewdev/scripts/install"
+
 # Define colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -61,16 +64,16 @@ install_language() {
     local lang=$1
     case $lang in
         python)
-            bash scripts/install/install_python.sh
+            bash "$tool_dir/install_python.sh"
             ;;
         node)
-            bash scripts/install/install_node.sh
+            bash "$tool_dir/install_node.sh"
             ;;
         java)
-            bash scripts/install/install_java.sh
+            bash "$tool_dir/install_java.sh"
             ;;
         go)
-            bash scripts/install/install_go.sh
+            bash "$tool_dir/install_go.sh"
             ;;
         *)
             echo -e "${RED}Unknown language: $lang${NC}"
@@ -118,10 +121,10 @@ uninstall_language() {
 # Function to install common tools
 install_common_tools() {
     echo -e "${BLUE}Installing common tools...${NC}"
-    bash scripts/install/install_git.sh
-    bash scripts/install/install_docker.sh
-    bash scripts/install/install_docker_hub.sh
-    bash scripts/install/install_postman.sh
+    bash "$tool_dir/install_git.sh"
+    bash "$tool_dir/install_docker.sh"
+    bash "$tool_dir/install_docker_hub.sh"
+    bash "$tool_dir/install_postman.sh"
 }
 
 # Function to uninstall common tools
@@ -151,9 +154,9 @@ uninstall_common_tools() {
 # Function to install AI/ML tools
 install_ai_ml_tools() {
     echo -e "${BLUE}Installing AI/ML tools...${NC}"
-    bash scripts/install/install_python.sh
-    bash scripts/install/install_jupyter.sh
-    bash scripts/install/install_ai_ml_packages.sh
+    bash "$tool_dir/install_python.sh"
+    bash "$tool_dir/install_jupyter.sh"
+    bash "$tool_dir/install_ai_ml_packages.sh"
 }
 
 # Function to uninstall AI/ML tools
@@ -279,7 +282,7 @@ elif [[ "$COMMAND" == "uninstall" ]]; then
             ;;
     esac
 elif [[ "$COMMAND" == "gui" ]]; then
-    bash scripts/gui.sh
+    bash /usr/local/brewdev/scripts/gui.sh
 else
     echo -e "${RED}Unknown command: $COMMAND${NC}"
     show_help
